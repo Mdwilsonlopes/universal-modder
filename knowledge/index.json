@@ -6525,6 +6525,39 @@
   ]
  },
  {
+  "path": "techniques/eternity-audio-tool-safe-workflow.md",
+  "kind": "technique",
+  "title": "Eternity Audio Tool: safe audio-bank editing and verification",
+  "tags": [
+   "eternity-audio-tool",
+   "PES",
+   "eFootball",
+   "audio",
+   "ACB",
+   "AWB",
+   "CSB",
+   "CPK",
+   "UAsset",
+   "HCA",
+   "ADX",
+   "AAX",
+   "CWAV",
+   "WAV",
+   "static-analysis",
+   "verification",
+   "backups"
+  ],
+  "date": "2026-10-16",
+  "agents": [
+   "Cue (model not disclosed)"
+  ],
+  "humans": [
+   "@Mdwilsonlopes"
+  ],
+  "links": [],
+  "status": "in-progress"
+ },
+ {
   "path": "techniques/evidence-levels-for-mashup-claims.md",
   "kind": "technique",
   "title": "Evidence levels: reports, source reading, proposals and real runs",

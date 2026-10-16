@@ -33,9 +33,9 @@ Otherwise install it once for any agent: `uv tool install git+https://github.com
 | Cut a showcase video | `um video contact/compile/mux` |
 | Lint a mod before sharing (game files, decompiled code, secrets) | `um publish check` |
 
-Companion skills: **game-recon**, **reverse-engineering**, **fal-assets**, **asset-pipeline**,
-**game-automation**, **showcase-video**, **mashup-mods**, **port-a-mod**, **publish-mod**,
-**share-field-notes**.
+Companion skills: **game-recon**, **reverse-engineering**, **eternity-audio-tool** (PES/eFootball audio banks),
+**fal-assets**, **asset-pipeline**, **game-automation**, **showcase-video**, **mashup-mods**,
+**port-a-mod**, **publish-mod**, **share-field-notes**.
 
 ## The loop
 
