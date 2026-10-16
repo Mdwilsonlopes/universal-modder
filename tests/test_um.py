@@ -596,7 +596,7 @@ def test_cutout_keeps_interior_white():
 def test_fit_and_hard_alpha():
     f = sprite.fit(sprite.cutout(sprite_on_white()), 10, 10, anchor="bottom")
     assert f.size == (10, 10) and f.getbbox()[3] == 10
-    assert set(sprite.hard_alpha(f).getchannel("A").getdata()) <= {0, 255}
+    assert set(sprite.hard_alpha(f).getchannel("A").tobytes()) <= {0, 255}
 
 
 def test_sheet_slice_roundtrip():
@@ -1208,8 +1208,15 @@ def test_skill_copies_match():
 
 
 # --------------------------------------------------------------------------- hooks
+_CYGPATH = shutil.which("cygpath")
+_GIT_BASH = shutil.which("bash.exe") or shutil.which("bash")
+_HAS_GIT_BASH = sys.platform == "win32" and bool(_CYGPATH and _GIT_BASH)
 
-@pytest.mark.skipif(not shutil.which("cygpath"), reason="Git Bash / MSYS only")
+
+@pytest.mark.skipif(
+    not _HAS_GIT_BASH,
+    reason="requires Windows with Git Bash/MSYS (cygpath and bash in PATH)",
+)
 def test_path_hook_writes_a_posix_root(tmp_path):
     # Claude Code passes ${CLAUDE_PLUGIN_ROOT} as C:/...; written as is, bash splits PATH at the drive colon
     import os
@@ -1217,7 +1224,7 @@ def test_path_hook_writes_a_posix_root(tmp_path):
     (root / "bin").mkdir(parents=True)
     (root / "bin" / "um").write_text("#!/bin/sh\n")
     env_file = tmp_path / "env.sh"
-    bash = str(Path(shutil.which("cygpath")).with_name("bash.exe"))
+    bash = _GIT_BASH
     hook = Path(__file__).resolve().parents[1] / "hooks" / "add-to-path.sh"
     subprocess.run([bash, str(hook), root.as_posix()], env={**os.environ, "CLAUDE_ENV_FILE": str(env_file)}, check=True)
     value = env_file.read_text().split('"')[1]
