@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "operation": "replace",
+  "entries": [
+    {
+      "track_id": "REPLACE_WITH_UNIQUE_BANK_ENTRY_ID",
+      "wav": "incoming/replace-me.wav"
+    }
+  ]
+}
